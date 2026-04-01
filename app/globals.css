@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #07070F;
+  color: #FFFFFF;
+  font-family: var(--font-inter);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #07070F; }
+::-webkit-scrollbar-thumb { background: #1E1E35; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #B8FF3C; }
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #B8FF3C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: #B8FF3C33;
+  color: #B8FF3C;
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-brand text-bg font-semibold px-5 py-2.5 rounded-lg text-sm
+           hover:bg-brand-dark active:scale-95 transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-bg-elevated border border-bg-border text-text-primary font-medium px-5 py-2.5 rounded-lg text-sm
+           hover:border-text-secondary active:scale-95 transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply text-text-secondary font-medium px-4 py-2 rounded-lg text-sm
+           hover:text-text-primary hover:bg-white/5 active:scale-95 transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply bg-red-500/15 text-red-400 border border-red-500/30 font-medium px-5 py-2.5 rounded-lg text-sm
+           hover:bg-red-500/25 active:scale-95 transition-all duration-150;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-bg-card border border-bg-border rounded-xl p-5;
+  }
+
+  .card-elevated {
+    @apply bg-bg-elevated border border-bg-border rounded-xl p-5;
+  }
+
+  /* Input */
+  .input {
+    @apply bg-bg-elevated border border-bg-border text-text-primary placeholder-text-muted
+           rounded-lg px-4 py-2.5 text-sm w-full
+           focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30
+           transition-colors duration-150;
+  }
+
+  .label {
+    @apply text-text-secondary text-xs font-medium uppercase tracking-wide mb-1.5 block;
+  }
+
+  /* Status badge */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply font-display text-3xl tracking-wide;
+  }
+
+  /* Separator */
+  .divider {
+    @apply border-t border-bg-border;
+  }
+
+  /* Avatar */
+  .avatar {
+    @apply rounded-full object-cover bg-bg-elevated flex items-center justify-center
+           text-text-secondary font-semibold;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 30px rgba(184, 255, 60, 0.15);
+  }
+}
