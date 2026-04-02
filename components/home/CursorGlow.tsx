@@ -34,7 +34,7 @@ export function CursorGlow() {
     document.documentElement.addEventListener('mouseleave', onLeave)
 
     const tick = () => {
-      const t = 0.14
+      const t = 0.09
       current.current.x += (target.current.x - current.current.x) * t
       current.current.y += (target.current.y - current.current.y) * t
       const { x, y } = current.current
@@ -61,17 +61,18 @@ export function CursorGlow() {
     <>
       <div
         ref={outerRef}
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-[120px] w-[120px] rounded-full opacity-0 mix-blend-screen will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-[100] h-[64px] w-[64px] rounded-full opacity-0 will-change-transform"
         style={{
-          background: 'radial-gradient(circle, rgba(184,255,60,0.22) 0%, rgba(184,255,60,0.06) 40%, transparent 70%)',
-          transition: 'opacity 0.25s ease',
+          background:
+            'radial-gradient(circle, rgba(184,255,60,0.045) 0%, rgba(184,255,60,0.015) 42%, transparent 68%)',
+          transition: 'opacity 0.35s ease',
         }}
         aria-hidden
       />
       <div
         ref={innerRef}
-        className="pointer-events-none fixed left-0 top-0 z-[101] h-2 w-2 rounded-full border border-brand/50 bg-brand/30 opacity-0 shadow-[0_0_12px_rgba(184,255,60,0.5)] will-change-transform backdrop-blur-[1px]"
-        style={{ transition: 'opacity 0.2s ease' }}
+        className="pointer-events-none fixed left-0 top-0 z-[101] h-[3px] w-[3px] rounded-full border border-white/[0.12] bg-white/[0.06] opacity-0 will-change-transform"
+        style={{ transition: 'opacity 0.35s ease' }}
         aria-hidden
       />
     </>
