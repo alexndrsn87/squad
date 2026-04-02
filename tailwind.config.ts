@@ -21,6 +21,11 @@ const config: Config = {
           elevated: "#161625",
           border: "#1E1E35",
         },
+        pitch: {
+          deep: "#050a08",
+          shadow: "#0a1810",
+          glow: "#143d28",
+        },
         text: {
           primary: "#FFFFFF",
           secondary: "#9090A8",
@@ -43,6 +48,12 @@ const config: Config = {
         "fade-in": "fadeIn 0.2s ease-out",
         "slide-up": "slideUp 0.3s ease-out",
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "float": "float 18s ease-in-out infinite",
+        "float-delayed": "float 22s ease-in-out infinite 2s",
+        "drift": "drift 24s ease-in-out infinite",
+        "spin-y": "spinY 14s linear infinite",
+        "shimmer": "shimmer 8s ease-in-out infinite",
+        "grid-pulse": "gridPulse 12s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -52,6 +63,27 @@ const config: Config = {
         slideUp: {
           "0%": { transform: "translateY(10px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(2%, -3%) scale(1.03)" },
+          "66%": { transform: "translate(-3%, 2%) scale(0.97)" },
+        },
+        drift: {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(-4%, 3%)" },
+        },
+        spinY: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(360deg)" },
+        },
+        shimmer: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.85" },
+        },
+        gridPulse: {
+          "0%, 100%": { opacity: "0.06" },
+          "50%": { opacity: "0.12" },
         },
       },
     },

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,7 @@
 :root {
   --font-bebas: 'Bebas Neue', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 * {
@@ -112,5 +113,42 @@ body {
   /* Glow effect */
   .glow {
     box-shadow: 0 0 30px rgba(184, 255, 60, 0.15);
+  }
+
+  /* Marketing landing */
+  .landing-root {
+    font-family: var(--font-jakarta);
+  }
+
+  .landing-pitch-grid {
+    background-image:
+      linear-gradient(rgba(184, 255, 60, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 255, 60, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 15%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 15%, transparent 65%);
+  }
+
+  .landing-vignette {
+    background: radial-gradient(ellipse 120% 80% at 50% 0%, transparent 40%, rgba(5, 10, 8, 0.85) 100%);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-root * {
+    animation: none !important;
+  }
+
+  [data-tilt-inner] {
+    transform: perspective(1400px) rotateX(0deg) rotateY(0deg) !important;
+    transition: none !important;
   }
 }
