@@ -12,6 +12,9 @@ export default function HomePage() {
       <nav className="flex items-center justify-between px-6 py-5 max-w-6xl mx-auto">
         <span className="font-display text-3xl tracking-widest text-brand">SQUAD</span>
         <div className="flex items-center gap-3">
+          <span className="text-xl leading-none select-none" title="Deploy pipeline check" aria-hidden>
+            🍌
+          </span>
           <Link href="/login" className="btn-ghost text-sm">Sign in</Link>
           <Link href="/signup" className="btn-primary text-sm">Start free</Link>
         </div>
