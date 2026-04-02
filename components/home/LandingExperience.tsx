@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { HeroScene } from '@/components/home/HeroScene'
 import { CursorGlow } from '@/components/home/CursorGlow'
-import { ScrollBallAtoms } from '@/components/home/ScrollBallAtoms'
 
 function useScrolled() {
   const [scrolled, setScrolled] = useState(false)
@@ -244,30 +243,34 @@ export default function LandingExperience() {
     <div className="landing-root relative min-h-screen overflow-x-hidden bg-bg text-text-primary antialiased">
       <AmbientLayers />
       <CursorGlow />
-      <ScrollBallAtoms />
 
-      <header
-        className={cn(
-          'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
-          scrolled
-            ? 'border-b border-white/[0.06] bg-bg/80 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl md:py-3'
-            : 'border-b border-transparent bg-transparent py-3 md:py-4'
-        )}
-      >
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 sm:px-5 md:px-6">
+      {/* Floating frosted bar — Built-Better blob site–style glass capsule */}
+      <div className="fixed left-0 right-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-4 sm:pt-4 md:pt-5">
+        <header
+          className={cn(
+            'flex w-full max-w-6xl items-center justify-between gap-2 rounded-2xl border px-3 py-2.5 shadow-2xl backdrop-blur-2xl backdrop-saturate-200 transition-[background,box-shadow,border-color] duration-300 sm:gap-3 sm:rounded-full sm:px-5 sm:py-3 md:px-6 md:py-3.5',
+            '[box-shadow:0_8px_40px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.14),inset_0_-1px_0_rgba(255,255,255,0.05)]',
+            scrolled
+              ? 'border-white/[0.22] bg-[rgba(8,8,16,0.72)] [box-shadow:0_12px_48px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-1px_0_rgba(255,255,255,0.06)]'
+              : 'border-white/[0.16] bg-[rgba(15,15,26,0.4)]'
+          )}
+          style={{
+            WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+          }}
+        >
           <Link
             href="/"
-            className="shrink-0 font-display text-xl tracking-[0.18em] text-brand transition-transform active:scale-95 sm:text-2xl md:text-3xl md:tracking-[0.2em]"
+            className="shrink-0 font-display text-lg tracking-[0.2em] text-brand transition-transform hover:opacity-95 active:scale-95 sm:text-xl md:text-2xl md:tracking-[0.22em]"
           >
             SQUAD
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Page sections">
+          <nav className="hidden items-center gap-0.5 font-medium lg:flex" aria-label="Page sections">
             {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
-                className="rounded-full px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-white/[0.05] hover:text-text-primary"
+                className="whitespace-nowrap rounded-full px-3 py-2 text-[0.9375rem] text-text-secondary transition-colors hover:bg-white/[0.08] hover:text-text-primary"
               >
                 {label}
               </a>
@@ -277,28 +280,28 @@ export default function LandingExperience() {
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/login"
-              className="hidden min-h-[44px] items-center rounded-full px-4 text-sm font-medium text-text-secondary transition-colors hover:bg-white/[0.05] hover:text-text-primary sm:inline-flex"
+              className="hidden min-h-[40px] items-center rounded-full px-3 text-sm font-medium text-text-secondary transition-colors hover:bg-white/[0.08] hover:text-text-primary sm:inline-flex md:px-4"
             >
               Sign in
             </Link>
             <Link
               href="/signup"
-              className="inline-flex min-h-[44px] items-center rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-bg shadow-[0_0_20px_rgba(184,255,60,0.25)] transition-transform active:scale-[0.98] sm:px-5"
+              className="inline-flex min-h-[40px] items-center rounded-full bg-brand px-4 py-2 text-sm font-bold text-bg shadow-[0_4px_18px_rgba(184,255,60,0.35)] transition-[transform,box-shadow] hover:shadow-[0_6px_24px_rgba(184,255,60,0.28)] active:scale-[0.98] sm:min-h-[44px] sm:px-5 sm:py-2.5"
             >
               Start free
             </Link>
             <button
               type="button"
-              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.04] text-text-primary lg:hidden"
+              className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-white/[0.14] bg-white/[0.06] text-text-primary transition-colors hover:bg-white/[0.1] md:hidden"
               aria-expanded={menuOpen}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setMenuOpen((o) => !o)}
             >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       {menuOpen && (
         <>
@@ -308,7 +311,10 @@ export default function LandingExperience() {
             aria-label="Close menu"
             onClick={closeMenu}
           />
-          <div className="fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col border-l border-white/[0.08] bg-bg-elevated/95 px-5 pb-8 pt-20 shadow-2xl backdrop-blur-xl lg:hidden">
+          <div
+            className="fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col border-l border-white/[0.14] bg-[rgba(10,10,18,0.82)] px-5 pb-8 pt-20 shadow-2xl backdrop-blur-2xl backdrop-saturate-200 lg:hidden"
+            style={{ WebkitBackdropFilter: 'blur(24px) saturate(200%)' }}
+          >
             <nav className="flex flex-1 flex-col gap-1" aria-label="Mobile sections">
               {navLinks.map(({ href, label }) => (
                 <a
@@ -334,7 +340,7 @@ export default function LandingExperience() {
 
       <main>
         {/* Hero — shop window */}
-        <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-12 pt-[4.75rem] sm:pb-16 sm:pt-24 md:min-h-0 md:py-28 lg:min-h-[100svh]">
+        <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-12 pt-24 sm:pb-16 sm:pt-28 md:min-h-0 md:py-28 lg:min-h-[100svh]">
           <HeroScene />
 
           <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-5 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12">
