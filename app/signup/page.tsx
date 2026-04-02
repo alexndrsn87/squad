@@ -8,6 +8,8 @@ import toast from 'react-hot-toast'
 import { ArrowRight, Mail, ArrowLeft } from 'lucide-react'
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
 import { AuthBackdrop } from '@/components/auth/AuthBackdrop'
+import { CursorGlow } from '@/components/home/CursorGlow'
+import { formatOAuthError } from '@/lib/auth-errors'
 
 const oauthBtn =
   'flex w-full min-h-[48px] items-center justify-center gap-3 rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-sm font-medium text-text-primary transition-colors hover:border-white/[0.18] hover:bg-white/[0.07] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50'
@@ -53,7 +55,7 @@ function SignupForm() {
       options: { redirectTo },
     })
     if (error) {
-      toast.error(error.message)
+      toast.error(formatOAuthError(error))
       setOauthLoading(null)
     }
   }
@@ -211,6 +213,7 @@ function SignupForm() {
 export default function SignupPage() {
   return (
     <div className="landing-root relative min-h-dvh bg-bg text-text-primary">
+      <CursorGlow />
       <AuthBackdrop />
 
       <Link

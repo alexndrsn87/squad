@@ -1,4 +1,4 @@
-/** Full-bleed hero visuals: 3D-style pitch, lights, floating ball — mobile scales down. */
+/** Full-bleed hero visuals: 3D-style pitch + stadium lights (no spinning ball). */
 export function HeroScene() {
   return (
     <div
@@ -50,25 +50,6 @@ export function HeroScene() {
           <div className="absolute left-1/2 top-1/2 h-[min(55vw,380px)] w-[min(55vw,380px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.18] shadow-[inset_0_0_60px_rgba(0,0,0,0.25)]" />
           <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
           <div className="absolute bottom-4 left-1/2 h-[min(18vw,88px)] w-[min(34vw,140px)] -translate-x-1/2 rounded border border-white/25 bg-white/[0.06]" />
-        </div>
-      </div>
-
-      {/* Hero ball — right side desktop, centered above fold mobile */}
-      <div className="absolute left-1/2 top-[8%] -translate-x-1/2 md:left-auto md:right-[6%] md:top-[20%] md:translate-x-0 lg:right-[10%]">
-        <div className="relative h-24 w-24 motion-safe:animate-float md:h-40 md:w-40">
-          <div
-            className="absolute inset-0 motion-safe:animate-spin-y rounded-full shadow-[0_24px_80px_rgba(0,0,0,0.5),inset_-10px_-10px_24px_rgba(0,0,0,0.4),inset_6px_6px_16px_rgba(255,255,255,0.18)]"
-            style={{
-              background:
-                'radial-gradient(circle at 28% 22%, #ffffff 0%, #e2e2e2 18%, #0d0d0d 19%, #0d0d0d 24%, #efefef 25%, #efefef 30%, #0d0d0d 31%, #f2f2f2 36%, #1f1f1f 100%)',
-              transform: 'rotateX(22deg) rotateY(-18deg)',
-            }}
-          />
-          <div className="absolute -inset-3 rounded-full border-2 border-brand/25 opacity-70 motion-safe:animate-pulse-slow" />
-          <div
-            className="absolute -inset-6 rounded-full border border-white/10 opacity-40 motion-safe:animate-spin-y md:-inset-8"
-            style={{ animationDuration: '22s' }}
-          />
         </div>
       </div>
 

@@ -25,11 +25,38 @@ body {
   font-family: var(--font-inter);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #07070F; }
-::-webkit-scrollbar-thumb { background: #1E1E35; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #B8FF3C; }
+/* Pitch-themed scrollbar (WebKit + Firefox) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2d5a3d #07070f;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #050a08 0%, #0a1810 45%, #050a08 100%);
+  border-left: 1px solid rgba(184, 255, 60, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c8ff50 0%, #7cb342 42%, #143d28 100%);
+  border-radius: 999px;
+  border: 2px solid rgba(5, 10, 8, 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(184, 255, 60, 0.12);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d4ff70 0%, #b8ff3c 38%, #1a4d32 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #050a08;
+}
 
 /* Focus styles */
 *:focus-visible {

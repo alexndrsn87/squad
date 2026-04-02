@@ -1,4 +1,4 @@
-/** Shared immersive backdrop for sign-in / sign-up — pitch plane + ball + lights (CSS 3D). */
+/** Shared immersive backdrop for sign-in / sign-up — pitch plane + lights (CSS 3D). */
 export function AuthBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
@@ -51,21 +51,6 @@ export function AuthBackdrop() {
           <div className="absolute left-1/2 top-1/2 h-[min(42vw,320px)] w-[min(42vw,320px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25" />
           <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-white/20" />
           <div className="absolute bottom-3 left-1/2 h-16 w-24 -translate-x-1/2 rounded-sm border border-white/20 bg-white/[0.04]" />
-        </div>
-      </div>
-
-      {/* Floating ball cluster */}
-      <div className="absolute right-[8%] top-[18%] motion-safe:animate-float md:right-[14%] md:top-[22%]">
-        <div className="relative h-28 w-28 motion-safe:animate-spin-y md:h-36 md:w-36" style={{ perspective: '500px' }}>
-          <div
-            className="absolute inset-0 rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.55),inset_-8px_-8px_20px_rgba(0,0,0,0.35),inset_4px_4px_12px_rgba(255,255,255,0.15)]"
-            style={{
-              background:
-                'radial-gradient(circle at 30% 25%, #f5f5f5 0%, #d0d0d0 25%, #1a1a1a 26%, #1a1a1a 32%, #f0f0f0 33%, #f0f0f0 38%, #1a1a1a 39%, #e8e8e8 45%, #2a2a2a 100%)',
-              transform: 'rotateX(18deg) rotateY(-12deg)',
-            }}
-          />
-          <div className="absolute -inset-2 rounded-full border border-brand/20 opacity-60 motion-safe:animate-pulse-slow" />
         </div>
       </div>
 

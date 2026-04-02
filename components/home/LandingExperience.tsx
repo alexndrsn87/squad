@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { HeroScene } from '@/components/home/HeroScene'
+import { CursorGlow } from '@/components/home/CursorGlow'
+import { ScrollBallAtoms } from '@/components/home/ScrollBallAtoms'
 
 function useScrolled() {
   const [scrolled, setScrolled] = useState(false)
@@ -241,6 +243,8 @@ export default function LandingExperience() {
   return (
     <div className="landing-root relative min-h-screen overflow-x-hidden bg-bg text-text-primary antialiased">
       <AmbientLayers />
+      <CursorGlow />
+      <ScrollBallAtoms />
 
       <header
         className={cn(
