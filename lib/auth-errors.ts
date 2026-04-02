@@ -7,7 +7,7 @@ export function formatOAuthError(error: { message?: string } | null | undefined)
     raw.includes('validation_failed') ||
     raw.includes('provider is not enabled')
   ) {
-    return 'Google (or Apple) isn’t enabled in your Supabase project yet. Use the email magic link below, or open Supabase → Authentication → Providers → Google → enable and add your OAuth client ID & secret.'
+    return 'Google sign-in isn’t enabled in your Supabase project yet. Use the email link below, or open Supabase → Authentication → Providers → Google → enable and add your OAuth client ID & secret.'
   }
   return error?.message ?? 'Something went wrong. Try email sign-in instead.'
 }
