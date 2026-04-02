@@ -4,7 +4,8 @@ import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
   title: { default: 'SQUAD', template: '%s · SQUAD' },
-  description: 'The smarter way to run your 5-a-side. Availability, payments, and balanced teams — sorted.',
+  description:
+    'Polls, subs, and fair teams for 5–7-a-side. Starter: 6 months free (ad-supported), then £2.99/mo.',
   keywords: ['5-a-side', 'football', 'team management', 'squad', 'payments', 'availability'],
   openGraph: {
     title: 'SQUAD',
