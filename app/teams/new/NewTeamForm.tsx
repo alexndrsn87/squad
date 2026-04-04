@@ -52,12 +52,17 @@ export function NewTeamForm({ userId, existingTeamCount }: NewTeamFormProps) {
       return
     }
 
-    // Auto-add creator as a member
-    await supabase.from('team_members').insert({
+    const { error: memberError } = await supabase.from('team_members').insert({
       team_id: team.id,
       user_id: userId,
       preferred_position: 'midfield',
     })
+
+    if (memberError) {
+      toast.error(memberError.message)
+      setLoading(false)
+      return
+    }
 
     toast.success(`${name} created!`)
     router.push(`/teams/${team.id}`)

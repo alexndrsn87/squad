@@ -71,11 +71,29 @@ CREATE TABLE public.team_members (
 
 ALTER TABLE public.team_members ENABLE ROW LEVEL SECURITY;
 
+-- Membership check outside RLS to avoid infinite recursion: roster policy must not
+-- subquery team_members directly (that re-triggers this same policy).
+CREATE OR REPLACE FUNCTION public.user_is_member_of_team(p_team_id uuid)
+RETURNS boolean
+LANGUAGE sql
+SECURITY DEFINER
+SET search_path = public
+STABLE
+AS $$
+  SELECT EXISTS (
+    SELECT 1 FROM public.team_members tm
+    WHERE tm.team_id = p_team_id AND tm.user_id = auth.uid()
+  );
+$$;
+
+REVOKE ALL ON FUNCTION public.user_is_member_of_team(uuid) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.user_is_member_of_team(uuid) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.user_is_member_of_team(uuid) TO service_role;
+
 CREATE POLICY "Team members can view roster" ON public.team_members
   FOR SELECT USING (
-    user_id = auth.uid() OR
-    EXISTS (SELECT 1 FROM public.teams WHERE id = team_id AND owner_id = auth.uid()) OR
-    EXISTS (SELECT 1 FROM public.team_members tm WHERE tm.team_id = team_members.team_id AND tm.user_id = auth.uid())
+    EXISTS (SELECT 1 FROM public.teams WHERE id = team_members.team_id AND owner_id = auth.uid())
+    OR public.user_is_member_of_team(team_id)
   );
 
 CREATE POLICY "Team owners can manage members" ON public.team_members
