@@ -19,7 +19,9 @@ REVOKE ALL ON FUNCTION public.user_is_member_of_team(uuid) FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION public.user_is_member_of_team(uuid) TO authenticated;
 GRANT EXECUTE ON FUNCTION public.user_is_member_of_team(uuid) TO service_role;
 
+-- Either name may exist depending on which schema you started from.
 DROP POLICY IF EXISTS "Team members can view roster" ON public.team_members;
+DROP POLICY IF EXISTS "Team members can view members" ON public.team_members;
 
 CREATE POLICY "Team members can view roster" ON public.team_members
   FOR SELECT USING (
